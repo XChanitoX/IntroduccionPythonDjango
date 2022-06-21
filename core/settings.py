@@ -1,12 +1,20 @@
 from pathlib import Path
+import os
+import environ
 
+#Para crear variables
+env = environ.Env()
+#Para leer variables
+environ.Env.read_env()
+
+#La carpeta del proyecto
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-SECRET_KEY = 'django-insecure-mzms$ort%zvdaa@7!lkn#-7tzy6w21@85(2en8+aa5q0axbzo^'
+SECRET_KEY = os.environ.get('SECRET_KEY')
 
-DEBUG = True
+DEBUG = os.environ.get('DEBUG')
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 # Application definition
 
@@ -17,6 +25,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    'core'
 ]
 
 MIDDLEWARE = [
@@ -34,7 +44,7 @@ ROOT_URLCONF = 'core.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
