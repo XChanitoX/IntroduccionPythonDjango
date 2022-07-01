@@ -28,6 +28,15 @@ INSTALLED_APPS = [
 
     'core',
     'blog',
+
+    'tailwind',
+    'theme'
+]
+
+NPM_BIN_PATH = r"C:\Program Files\nodejs\npm.cmd"
+TAILWIND_APP_NAME = 'theme'
+INTERNAL_IPS = [
+    "127.0.0.1",
 ]
 
 MIDDLEWARE = [
